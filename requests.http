@@ -1,0 +1,11 @@
+### Call Service A through proxy
+GET http://localhost:5000/service_a/
+
+### Call Service B through proxy
+GET http://localhost:5000/service_b/
+
+### Call Service A directly
+GET http://localhost:5001/service_a/
+
+### Call Service B directly
+GET http://localhost:5002/service_b/

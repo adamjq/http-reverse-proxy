@@ -1,0 +1,41 @@
+
+version: "3.9"
+
+services:
+  reverseproxy:
+    build: .
+    command: make run-proxy
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - SERVICE_A_URL=http://service_a:5001
+      - SERVICE_B_URL=http://service_b:5002
+    depends_on:
+      - service_a
+      - service_b
+    links:
+      - service_a
+      - service_b
+    volumes:
+      - .:/src
+  service_a:
+    container_name: service_a
+    build: .
+    command: make run-a
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+    volumes:
+      - .:/src
+  service_b:
+    container_name: service_b
+    build: .
+    command: make run-b
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+    volumes:
+      - .:/src
