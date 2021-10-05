@@ -1,3 +1,9 @@
+format:
+	gofmt -s -w .
+
+test:
+	go test ./...
+
 run-proxy:
 	go run cmd/reverseproxy/main.go
 
@@ -6,6 +12,3 @@ run-a:
 
 run-b:
 	go run cmd/service_b/main.go
-	
-format:
-	gofmt -s -w .
