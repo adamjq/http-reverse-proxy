@@ -12,10 +12,9 @@ func TestConfig_valid(t *testing.T) {
 	t.Setenv("SERVICE_A_URL", "https://my-service-a.com")
 	t.Setenv("SERVICE_B_URL", "https://my-service-b.com")
 
-	cfg, err := New()
-	assert.NoError(err)
+	cfg := NewConfig()
 
-	err = cfg.validate()
+	err := cfg.validate()
 	assert.NoError(err)
 
 	assert.Equal("9000", cfg.Port)
@@ -26,10 +25,9 @@ func TestConfig_valid(t *testing.T) {
 func TestConfig_defaults(t *testing.T) {
 	assert := require.New(t)
 
-	cfg, err := New()
-	assert.NoError(err)
+	cfg := NewConfig()
 
-	err = cfg.validate()
+	err := cfg.validate()
 	assert.NoError(err)
 
 	assert.Equal("5000", cfg.Port)

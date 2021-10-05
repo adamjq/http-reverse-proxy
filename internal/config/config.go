@@ -24,15 +24,15 @@ func (c *Config) validate() error {
 	return nil
 }
 
-func New() (*Config, error) {
+func NewConfig() *Config {
 	cfg := Config{}
 	err := envconfig.Process("", &cfg)
 	if err != nil {
-		return nil, errors.Wrap(err, "Failed to load config")
+		panic(err)
 	}
 	err = cfg.validate()
 	if err != nil {
-		return nil, errors.Wrap(err, "Invalid config loaded")
+		panic(err)
 	}
-	return &cfg, nil
+	return &cfg
 }

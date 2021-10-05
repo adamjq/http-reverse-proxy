@@ -2,6 +2,25 @@
 
 This repo contains a simple [reverse-proxy server](https://en.wikipedia.org/wiki/Reverse_proxy) written in Golang.
 
+## Dependencies:
+
+- Golang
+- Docker
+- [wire](https://github.com/google/wire)
+
+## Development
+
+Generate mock and dependencies to inject with [wire](https://github.com/google/wire):
+```bash
+make generate
+```
+
+Run unit tests:
+
+```bash
+make test
+```
+
 ## Usage:
 
 ```bash
